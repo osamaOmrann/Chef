@@ -1,32 +1,45 @@
+import 'package:chef/core/bloc/cubit/global_cubit.dart';
+import 'package:chef/core/bloc/cubit/global_state.dart';
+import 'package:chef/core/locale/app_locale.dart';
 import 'package:chef/core/routes/app_routes.dart';
+import 'package:chef/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 main() {
-  runApp(MyApp());
+  runApp(BlocProvider(
+    create: (context) => GlobalCubit(),
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: Routes.initialRoute,
-      onGenerateRoute: AppRoutes.generateRoute,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: Scaffold(
-        body: Center(
-          child: MaterialButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (_) => Scaffold()));
-            },
-          ),
-        ),
-      ),
+    return BlocBuilder<GlobalCubit, GlobalState>(
+      builder: (context, state) {
+        return MaterialApp(
+          localizationsDelegates: [
+            GlobalMaterialLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            AppLocalizations.delegate
+          ],
+          supportedLocales: [
+            Locale('ar', "EG"),
+            Locale('en', "UK"),
+          ],
+          locale: Locale(BlocProvider
+              .of<GlobalCubit>(context)
+              .langCode),
+          initialRoute: Routes.initialRoute,
+          onGenerateRoute: AppRoutes.generateRoute,
+          theme: getAppTheme(),
+        );
+      },
     );
   }
 }
