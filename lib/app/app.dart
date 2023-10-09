@@ -1,3 +1,4 @@
+import 'package:chef/core/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 
 main() {
@@ -11,7 +12,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(),
+      initialRoute: Routes.initialRoute,
+      onGenerateRoute: AppRoutes.generateRoute,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: Scaffold(
+        body: Center(
+          child: MaterialButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (_) => Scaffold()));
+            },
+          ),
+        ),
+      ),
     );
   }
 }
