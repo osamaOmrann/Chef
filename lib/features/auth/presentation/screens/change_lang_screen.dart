@@ -35,7 +35,7 @@ class ChangeLangScreen extends StatelessWidget {
                     height: height * .04,
                   ),
                   Text(
-                    AppStrings.WelcomeToChefApp.tr(context),
+                    AppStrings.welcomeToChefApp.tr(context),
                     style: Theme.of(context)
                         .textTheme
                         .displayLarge!
@@ -57,18 +57,20 @@ class ChangeLangScreen extends StatelessWidget {
                     children: [
                       CustomButton(
                           onPressed: () {
-                            BlocProvider.of<GlobalCubit>(context).changeLang();
+                            BlocProvider.of<GlobalCubit>(context).changeLangToEnglish();
                           },
                           text: 'English',
                           height: height * .05,
+                          background: AppColors.black,
                           width: width * .35),
                       Spacer(),
                       CustomButton(
                           onPressed: () {
-                            BlocProvider.of<GlobalCubit>(context).changeLang();
+                            BlocProvider.of<GlobalCubit>(context).changeLangToArabic();
                           },
                           text: 'العربية',
                           height: height * .05,
+                          background: AppColors.black,
                           width: width * .35),
                     ],
                   );

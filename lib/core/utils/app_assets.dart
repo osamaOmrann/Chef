@@ -5,4 +5,5 @@ class AppAssets {
   static const String user = '${basePath}user.png';
   static const String background = '${basePath}background.png';
   static const String background2 = '${basePath}background_2.png';
+  static const String loginBackground = '${basePath}login_background.png';
 }

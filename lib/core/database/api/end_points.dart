@@ -28,7 +28,7 @@ class EndPoint {
   }
 }
 
-class APIKey {
+class APIKeys {
   static const String id = 'id';
   static const String email = 'email';
   static const String password = 'password';

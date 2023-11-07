@@ -10,7 +10,7 @@ ThemeData getAppTheme() {
       backgroundColor: AppColors.primary
     ),
     textTheme: TextTheme(
-      displayLarge: boldStyle(color: AppColors.black),
+      displayLarge: boldStyle(color: AppColors.white),
       displayMedium: regularStyle()
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -28,7 +28,18 @@ ThemeData getAppTheme() {
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8)
       ),
+        errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8)
+      ),
       hintStyle: boldStyle(color: AppColors.grey, fontSize: 16)
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: ButtonStyle(
+        foregroundColor: MaterialStateProperty.all(AppColors.grey),
+        textStyle: MaterialStateProperty.all(
+            boldStyle(color: AppColors.grey, fontSize: 16)
+        )
+      )
     )
   );
 }

@@ -29,7 +29,7 @@ class AppRoutes {
   static Route? generateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case Routes.initialRoute:
-        return MaterialPageRoute(builder: (_) => SplashScreen());
+        return MaterialPageRoute(builder: (_) => LoginScreen());
       case Routes.login:
         return MaterialPageRoute(builder: (_) => LoginScreen());
       case Routes.changeLang:
