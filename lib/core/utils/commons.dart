@@ -7,6 +7,11 @@ void navigate(
   Navigator.pushNamed(context, route, arguments: arg);
 }
 
+void navigateLast(
+    {required BuildContext context, required String route, dynamic arg}) {
+  Navigator.pushNamedAndRemoveUntil(context, route, (route) => false,arguments: arg);
+}
+
 void showToast({
   required String message,
   required ToastStates state,

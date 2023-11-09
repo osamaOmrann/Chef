@@ -19,6 +19,12 @@ class SendCodeScreen extends StatelessWidget {
         width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            navigateLast(context: context, route: Routes.login);
+          },
+          icon: Icon(Icons.arrow_back),
+        ),
         title: Text(AppStrings.forgetPassword.tr(context)),
       ),
       body: Padding(
@@ -28,7 +34,7 @@ class SendCodeScreen extends StatelessWidget {
             listener: (context, state) {
               if(state is SendCodeSuccess) {
                 showToast(message: state.message, state: ToastStates.success);
-                navigate(context: context, route: Routes.resetPassword);
+                navigateLast(context: context, route: Routes.resetPassword);
               }
             },
             builder: (context, state) {

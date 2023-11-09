@@ -20,6 +20,12 @@ class ResetPasswordScreen extends StatelessWidget {
         width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            navigateLast(context: context, route: Routes.sendCode);
+          },
+          icon: Icon(Icons.arrow_back),
+        ),
         title: Text(AppStrings.createYourNewPassword.tr(context)),
       ),
       body: Padding(
@@ -29,7 +35,7 @@ class ResetPasswordScreen extends StatelessWidget {
             listener: (context, state) {
               if(state is ResetPasswordSuccess) {
                 showToast(message: state.message, state: ToastStates.success);
-                navigate(context: context, route: Routes.login);
+                navigateLast(context: context, route: Routes.login);
               }
             },
             builder: (context, state) {
